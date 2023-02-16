@@ -28,7 +28,10 @@ jobs:
         with:
           cache-version: 1
 
-      - run: apt-get install -y r-cran-rmarkdown r-cran-plotly
+      - name: Install extra dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rmarkdown, any::plotly
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
