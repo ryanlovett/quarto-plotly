@@ -1,0 +1,36 @@
+---
+title: "Test Plotly"
+---
+
+This is a minimal repo to test out publishing websites that include graphics produced using `plotly`.
+
+```{r}
+#| warning: false
+library(tidyverse)
+zagat <- read_csv("https://www.dropbox.com/s/c797oanmvdzjegt/zagat.csv?dl=1")
+
+library(plotly)
+library(reshape2)
+
+m1 <- lm(price ~ food + decor, data = zagat)
+grid_points <- 30
+axis_x <- seq(min(zagat$food), 
+              max(zagat$food),
+              length.out = grid_points)
+axis_y <- seq(min(zagat$decor), 
+              max(zagat$decor),
+              length.out = grid_points)
+zagat_plane <- expand.grid(food = axis_x, 
+                         decor = axis_y, 
+                         KEEP.OUT.ATTRS = F)
+zagat_plane$price <- predict.lm(m1, newdata = zagat_plane)
+z <- acast(zagat_plane, food ~ decor, value.var = "price")
+p <- plot_ly(zagat, x = ~food, y = ~decor, z = ~price, showlegend=FALSE) %>%
+  add_markers(marker = list(size = 5,
+                            opacity = .6,
+                            color = "steelblue"),
+              name = ~restaurant) %>%
+  config(displayModeBar = FALSE)
+p
+```
+
