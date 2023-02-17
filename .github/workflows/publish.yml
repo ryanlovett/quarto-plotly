@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: quarto publish gh-pages
-        run: quarto publish gh-pages
+        run: quarto publish gh-pages --log-level debug
 
       #- name: Render and Publish
       #  uses: quarto-dev/quarto-actions/publish@v2
