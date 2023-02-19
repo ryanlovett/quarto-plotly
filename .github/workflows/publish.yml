@@ -25,8 +25,8 @@ jobs:
       - name: quarto render
         run: quarto render
 
-      - name: quarto publish gh-pages
-        run: quarto publish gh-pages --log-level=debug --no-prompt --no-browser --no-render
+      #- name: quarto publish gh-pages
+      #  run: quarto publish gh-pages --log-level=debug --no-prompt --no-browser --no-render
 
       #- name: Render and Publish
       #  uses: quarto-dev/quarto-actions/publish@v2
