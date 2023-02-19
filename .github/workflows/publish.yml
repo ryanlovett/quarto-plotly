@@ -26,28 +26,22 @@ jobs:
 
       - name: work around permission issue
         run: |
-          git config --global --add safe.directory /__w/quarto-plotly/quarto-plotly
+          ( cd master ; git config --global --add safe.directory /__w/quarto-plotly/quarto-plotly/master )
 
       - name: what do we have here?
         run: find .
 
       - name: quarto render
-        run: quarto render
+        run: ( cd master ; quarto render )
 
       - name: what do we have here now?
         run: find .
-
-      - name: git branch
-        run: git branch
 
       - name: Check out gh-pages
         uses: actions/checkout@v3
         with:
           ref: gh-pages
           path: gh-pages
-
-      - name: pwd
-        run: pwd
 
       - name: what is in gh-pages?
         run: find .
