@@ -43,6 +43,8 @@ jobs:
       - name: Commit and push rendered output
         run: |
           cd gh-pages
+          git config --global user.email "rylo@berkeley.edu"
+          git config --global user.name "Ryan Lovett"
           git commit -m "github actions commit."
           git push
 
