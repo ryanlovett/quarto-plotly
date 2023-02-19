@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Test Plotly",
+    "section": "",
+    "text": "This is a minimal repo to test out publishing websites that include graphics produced using plotly.\n\nlibrary(tidyverse)\nzagat <- read_csv(\"https://www.dropbox.com/s/c797oanmvdzjegt/zagat.csv?dl=1\")\n\nlibrary(plotly)\nlibrary(reshape2)\n\nm1 <- lm(price ~ food + decor, data = zagat)\ngrid_points <- 30\naxis_x <- seq(min(zagat$food), \n              max(zagat$food),\n              length.out = grid_points)\naxis_y <- seq(min(zagat$decor), \n              max(zagat$decor),\n              length.out = grid_points)\nzagat_plane <- expand.grid(food = axis_x, \n                         decor = axis_y, \n                         KEEP.OUT.ATTRS = F)\nzagat_plane$price <- predict.lm(m1, newdata = zagat_plane)\nz <- acast(zagat_plane, food ~ decor, value.var = \"price\")\np <- plot_ly(zagat, x = ~food, y = ~decor, z = ~price, showlegend=FALSE) %>%\n  add_markers(marker = list(size = 5,\n                            opacity = .6,\n                            color = \"steelblue\"),\n              name = ~restaurant) %>%\n  config(displayModeBar = FALSE)\np"
+  }
+]
