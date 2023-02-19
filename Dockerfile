@@ -15,6 +15,7 @@ RUN echo "export PATH" >> /etc/profile
 
 RUN apt-get update && \
     apt-get install --yes \
+        rsync \
         libcurl4-openssl-dev \
         && \
     apt-get clean && \
