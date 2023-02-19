@@ -18,6 +18,11 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
+        with:
+          path: master
+
+      - name: pwd
+        run: pwd
 
       - name: work around permission issue
         run: |
@@ -35,8 +40,14 @@ jobs:
       - name: git branch
         run: git branch
 
-      - name: git checkout gh-pages
-        run: git checkout gh-pages
+      - name: Check out gh-pages
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: pwd
+        run: pwd
 
       - name: what is in gh-pages?
         run: find .
