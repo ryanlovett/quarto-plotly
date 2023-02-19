@@ -21,6 +21,12 @@ jobs:
         with:
           path: master
 
+      - name: Check out gh-pages
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+          path: gh-pages
+
       - name: Work around permission issue
         run: |
           ( cd master ; git config --global --add safe.directory /__w/quarto-plotly/quarto-plotly/master )
@@ -28,12 +34,6 @@ jobs:
 
       - name: quarto render
         run: ( cd master ; quarto render )
-
-      - name: Check out gh-pages
-        uses: actions/checkout@v3
-        with:
-          ref: gh-pages
-          path: gh-pages
 
       - name: Copy rendered output to gh-pages
         run: |
