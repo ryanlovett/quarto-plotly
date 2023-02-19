@@ -4,6 +4,10 @@ title: "Test Plotly"
 
 This is a minimal repo to test out publishing websites that include graphics produced using `plotly`.
 
+Here is some additional text to test GitHub Actions.
+
+2023-02-18 22:55
+
 ```{r}
 #| warning: false
 library(tidyverse)
