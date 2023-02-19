@@ -25,6 +25,18 @@ jobs:
       - name: quarto render
         run: quarto render
 
+      - name: what do we have here now?
+        run: find .
+
+      - name: git branch
+        run: git branch
+
+      - name: git checkout gh-pages
+        run: git checkout gh-pages
+
+      - name: what is in gh-pages?
+        run: find .
+
       #- name: quarto publish gh-pages
       #  run: quarto publish gh-pages --log-level=debug --no-prompt --no-browser --no-render
 
