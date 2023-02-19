@@ -17,7 +17,11 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: work around permission issue
+        run: |
+          git config --global --add safe.directory /github/workspace
 
       - name: what do we have here?
         run: find .
