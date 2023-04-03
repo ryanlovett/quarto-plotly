@@ -17,6 +17,11 @@ RUN apt-get update && \
     apt-get install --yes \
         rsync \
         libcurl4-openssl-dev \
+        texlive-xetex \
+        texlive-latex-extra \
+        texlive-fonts-recommended \
+        texlive-fonts-extra \
+        texlive-plain-generic \
         && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
